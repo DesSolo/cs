@@ -24,8 +24,14 @@ RUN ln -s /steamcmd/linux32 ~/.steam/sdk32
 
 WORKDIR /opt/hlds
 
+ADD ./maps ./cstrike/maps
+
 EXPOSE $PORT/udp
 EXPOSE $PORT/tcp
 
-ENTRYPOINT ["./hlds_run"]
-CMD ["-game", "cstrike", "-strictportbind", "-autoupdate", "-ip", "0.0.0.0", "-port", "${PORT}", "+sv_lan", "${SV_LAN}", "+map", "${MAP}", "-maxplayers", "${MAXPLAYERS}"]
+CMD ./hlds_run -game cstrike -strictportbind -autoupdate \
+	-ip 0.0.0.0 \
+	-port $PORT \
+	+sv_lan $SV_LAN \
+	+map $MAP \
+	-maxplayers $MAXPLAYERS
