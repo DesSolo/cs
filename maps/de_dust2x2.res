@@ -1,3 +1,3 @@
 //This map was downloaded from http://files.cs-best.org.ua/
-maps/$2000$.res
-maps/$2000$.txt
+maps/de_dust2x2.res
+maps/de_dust2x2.txt

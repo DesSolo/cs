@@ -1,3 +1,2 @@
 //This map was downloaded from http://files.cs-best.org.ua/
-maps/$2000$.res
-maps/$2000$.txt
+maps/35hp_2.res
