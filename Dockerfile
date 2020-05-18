@@ -19,6 +19,22 @@ RUN ./steamcmd.sh +login anonymous +force_install_dir /opt/hlds +app_update 90 v
 RUN ln -s /opt/steam/linux32 ~/.steam/sdk32
 
 ADD maps/* /opt/hlds/cstrike/maps/
+COPY files/mapcycle.txt /opt/hlds/cstrike/mapcycle.txt
+
+# Install metamod
+WORKDIR /opt/hlds/cstrike/addons/metamod/dlls
+RUN wget "http://prdownloads.sourceforge.net/metamod/metamod-1.20-linux.tar.gz" && \
+        tar xfz metamod-1.20-linux.tar.gz && \
+        rm metamod-1.20-linux.tar.gz
+COPY files/liblist.gam /opt/hlds/cstrike/liblist.gam
+
+
+# Install AMX Mod X
+WORKDIR /opt/hlds/cstrike
+RUN wget "https://www.amxmodx.org/amxxdrop/1.9/amxmodx-1.9.0-git5263-base-linux.tar.gz" && \
+        tar xfz amxmodx-1.9.0-git5263-base-linux.tar.gz && \
+        rm amxmodx-1.9.0-git5263-base-linux.tar.gz && \
+	echo "linux addons/amxmodx/dlls/amxmodx_mm_i386.so" >> "/opt/hlds/cstrike/addons/metamod/plugins.ini"
 
 EXPOSE $PORT/udp
 EXPOSE $PORT/tcp
