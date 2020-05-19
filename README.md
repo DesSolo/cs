@@ -1,6 +1,6 @@
 CS 1.6 server
 =====
-`podman run --rm -dit -p 27015:27015 -p 27015:27015/udp --name cs16 dessolo/cs:1.6-deb`
+`podman run --rm -dit -p 27015:27015 -p 27015:27015/udp --name cs16 dessolo/cs:1.6`
 `podman attach cs16`
 
 ### Maps added
@@ -17,5 +17,7 @@ awp_india
 
 ### Plugins
 ```
-metamod
+metamod - 1.20
+dproto - 0.9.582-p
+AMX Mod X - 1.9.0
 ```
